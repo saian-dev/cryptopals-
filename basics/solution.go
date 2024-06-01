@@ -71,3 +71,12 @@ func SingleByteXOR(text []byte, key byte) string {
 	}
 	return string(result)
 }
+
+func RepeatingXOR(msg string, key string) string {
+	result := make([]byte, 0)
+	byte_key := []byte(key)
+	for i, v := range []byte(msg) {
+		result = append(result, v^byte_key[i%3])
+	}
+	return hex.EncodeToString(result)
+}
