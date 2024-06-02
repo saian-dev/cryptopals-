@@ -4,6 +4,7 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"errors"
+	"math/bits"
 )
 
 func ConvertHexToBase64(hexString string) (string, error) {
@@ -79,4 +80,16 @@ func RepeatingXOR(msg string, key string) string {
 		result = append(result, v^byte_key[i%3])
 	}
 	return hex.EncodeToString(result)
+}
+
+func HummingDistance(a string, b string) (int, error) {
+	if len(a) != len(b) {
+		return 0, errors.New("lengths should be equal")
+	}
+
+	diff := 0
+	for i := range len(a) {
+		diff += bits.OnesCount(uint(a[i] ^ b[i]))
+	}
+	return diff, nil
 }

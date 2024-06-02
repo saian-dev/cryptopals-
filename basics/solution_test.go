@@ -60,3 +60,14 @@ func TestRepeatingXOR(t *testing.T) {
 		t.Fatalf("XOR: '%v' expected but got '%v'", expected, result)
 	}
 }
+
+func TestHummingDistance(t *testing.T) {
+	expected := 37
+
+	a := "this is a test"
+	b := "wokka wokka!!!"
+	result, _ := HummingDistance(a, b)
+	if result != expected {
+		t.Fatalf("XOR: '%v' expected but got '%v'", expected, result)
+	}
+}
